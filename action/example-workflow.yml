@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # need history so the base version can be diffed
-      - uses: zuacaldeira/amcheck/action@v1 # the action lives in the action/ subdir
+      - uses: bica-tools/amcheck/action@v1 # the action lives in the action/ subdir
         with:
           config: alertmanager.yml
           # mode: exhaustive       # optional: complete (exhaustive) engine

@@ -9,7 +9,7 @@ the mistake in review, not during an incident.
 ```yaml
 - uses: actions/checkout@v4
   with: { fetch-depth: 0 }        # history is needed to diff the base version
-- uses: zuacaldeira/amcheck/action@v1
+- uses: bica-tools/amcheck/action@v1
   with:
     config: alertmanager.yml
 ```

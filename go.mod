@@ -1,4 +1,4 @@
-module github.com/zuacaldeira/amcheck
+module github.com/bica-tools/amcheck
 
 go 1.26.5
 
