@@ -1,0 +1,12 @@
+route:
+  receiver: default
+  group_by: [alertname]
+  routes:
+    - matchers: ['team=~"payments"']
+      receiver: finance-slack
+    - matchers: ['severity=~"critical"']
+      receiver: sev-slack
+receivers:
+  - name: default
+  - name: finance-slack
+  - name: sev-slack

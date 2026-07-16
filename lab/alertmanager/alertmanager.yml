@@ -1,0 +1,45 @@
+# Baseline Alertmanager config for the lab.
+# Routing tree: team=payments (+ severity=critical subtree), team=search.
+# Inhibition: a firing critical mutes the warning of the same alertname+team.
+# Receivers post to the webhook sink so you can see what gets delivered.
+
+route:
+  receiver: default
+  group_by: [alertname, team]
+  group_wait: 3s
+  group_interval: 10s
+  repeat_interval: 1h
+  routes:
+    - matchers: ['team="payments"']
+      receiver: payments
+      routes:
+        - matchers: ['severity="critical"']
+          receiver: payments-critical
+    - matchers: ['team="search"']
+      receiver: search
+
+inhibit_rules:
+  # A firing payments critical mutes the payments warning of the same alert.
+  # (Scoped to team=payments so the lab can later show a NEW rule newly muting
+  #  team=search — see alertmanager-v2.yml and amcheck.)
+  - source_matchers: ['severity="critical"']
+    target_matchers: ['team="payments"', 'severity="warning"']
+    equal: ['alertname', 'team']
+
+receivers:
+  - name: default
+    webhook_configs:
+      - url: "http://sink:8080/default"
+        send_resolved: true
+  - name: payments
+    webhook_configs:
+      - url: "http://sink:8080/payments"
+        send_resolved: true
+  - name: payments-critical
+    webhook_configs:
+      - url: "http://sink:8080/payments-critical"
+        send_resolved: true
+  - name: search
+    webhook_configs:
+      - url: "http://sink:8080/search"
+        send_resolved: true

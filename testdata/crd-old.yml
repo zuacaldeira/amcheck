@@ -1,0 +1,41 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: example
+  namespace: monitoring
+spec:
+  route:
+    receiver: default
+    groupBy: [alertname]
+    routes:
+      - matchers:
+          - name: team
+            value: payments
+            matchType: "="
+        receiver: payments
+        routes:
+          - matchers:
+              - name: severity
+                value: critical
+                matchType: "="
+            receiver: payments-pager
+      - matchers:
+          - name: team
+            value: search
+            matchType: "="
+        receiver: search
+  receivers:
+    - name: default
+    - name: payments
+    - name: payments-pager
+    - name: search
+  inhibitRules:
+    - sourceMatchers:
+        - name: severity
+          value: critical
+          matchType: "="
+      targetMatchers:
+        - name: severity
+          value: warning
+          matchType: "="
+      equal: [alertname, team]

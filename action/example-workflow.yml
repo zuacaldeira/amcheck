@@ -1,0 +1,27 @@
+# Copy this into a consumer repo as .github/workflows/alerting-config-safety.yml
+# It fails any PR that silently drops an alert route (or adds a new suppression)
+# to your Alertmanager config.
+
+name: alerting-config-safety
+on:
+  pull_request:
+    paths:
+      - "alertmanager.yml"
+      - "**/alertmanager.yml"
+
+permissions:
+  contents: read
+  pull-requests: write # so the action can post a comment
+
+jobs:
+  amcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # need history so the base version can be diffed
+      - uses: zuacaldeira/amcheck/action@v1 # the action lives in the action/ subdir
+        with:
+          config: alertmanager.yml
+          # mode: exhaustive       # optional: complete (exhaustive) engine
+          # new-silences: silences.json

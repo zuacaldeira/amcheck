@@ -1,0 +1,4 @@
+route:
+  receiver: '{{ .Values.defaultReceiver }}'
+receivers:
+  - name: '{{ .Values.defaultReceiver }}'

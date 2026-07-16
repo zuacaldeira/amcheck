@@ -1,0 +1,9 @@
+route:
+  receiver: default
+  group_by: [alertname]
+  routes:
+    - matchers: ['severity="warning"']
+      receiver: warn-slack
+receivers:
+  - name: default
+  - name: warn-slack

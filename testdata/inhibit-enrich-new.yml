@@ -1,0 +1,12 @@
+route:
+  receiver: default
+  routes:
+    - matchers: ['team="search"']
+      receiver: search
+inhibit_rules:
+  - source_matchers: ['severity="critical"']
+    target_matchers: ['team="search"', 'severity="warning"']
+    equal: []
+receivers:
+  - name: default
+  - name: search

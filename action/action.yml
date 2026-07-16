@@ -1,0 +1,50 @@
+name: "amcheck — Alertmanager config safety"
+description: "Fail a PR that silently drops an alert route or adds a new suppression to your Alertmanager config."
+branding:
+  icon: "bell-off"
+  color: "orange"
+
+inputs:
+  config:
+    description: "Path to the Alertmanager config file to check (relative to the repo root)."
+    required: true
+  mode:
+    description: "Check engine: operational (fast, sampled) or exhaustive (complete)."
+    required: false
+    default: "operational"
+  base-ref:
+    description: "Git ref/spec to diff against. Default: the PR base branch, or HEAD^ on push."
+    required: false
+    default: ""
+  old-silences:
+    description: "Optional amtool silence export JSON for the base side."
+    required: false
+    default: ""
+  new-silences:
+    description: "Optional amtool silence export JSON for the head side."
+    required: false
+    default: ""
+  comment:
+    description: "Post the result as a PR comment (needs pull-requests: write). true/false."
+    required: false
+    default: "true"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: "stable"
+        cache: false
+    - name: Run amcheck
+      shell: bash
+      run: ${{ github.action_path }}/entrypoint.sh
+      env:
+        INPUT_CONFIG: ${{ inputs.config }}
+        INPUT_MODE: ${{ inputs.mode }}
+        INPUT_BASE_REF: ${{ inputs.base-ref }}
+        INPUT_OLD_SILENCES: ${{ inputs.old-silences }}
+        INPUT_NEW_SILENCES: ${{ inputs.new-silences }}
+        INPUT_COMMENT: ${{ inputs.comment }}
+        GH_TOKEN: ${{ github.token }}

@@ -1,0 +1,16 @@
+route:
+  receiver: default
+  group_by: [alertname]
+  routes:
+    - matchers: ['team=~"payments-.*"']
+      receiver: payments-slack
+      routes:
+        - matchers: ['severity="critical"']
+          receiver: payments-pager
+    - matchers: ['team="search"']
+      receiver: search-slack
+receivers:
+  - name: default
+  - name: payments-slack
+  - name: payments-pager
+  - name: search-slack

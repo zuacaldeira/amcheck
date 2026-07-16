@@ -1,0 +1,8 @@
+route:
+  receiver: default
+  routes:
+    - matchers: ['team="search"']
+      receiver: search
+receivers:
+  - name: default
+  - name: search

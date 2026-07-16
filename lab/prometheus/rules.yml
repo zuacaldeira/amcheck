@@ -1,0 +1,35 @@
+# Always-firing demo alerts (expr: vector(1)) so you get a real, steady alert
+# stream without needing a failing service. Labels are chosen to exercise the
+# routing tree and the inhibition rule in alertmanager/alertmanager.yml.
+
+groups:
+  - name: demo
+    rules:
+      # Same alertname + team, two severities → the inhibition rule
+      # (critical inhibits warning, equal [alertname, team]) will mute the
+      # warning copy. Watch it get suppressed in the Alertmanager UI.
+      - alert: PaymentsHealth
+        expr: vector(1)
+        for: 0m
+        labels: { severity: warning, team: payments }
+        annotations: { summary: "payments degraded (demo, always firing)" }
+      - alert: PaymentsHealth
+        expr: vector(1)
+        for: 0m
+        labels: { severity: critical, team: payments }
+        annotations: { summary: "payments DOWN (demo, always firing)" }
+
+      # A distinct critical with no warning twin → routes to payments-critical
+      # and is delivered (nothing inhibits it).
+      - alert: PaymentsCheckoutErrors
+        expr: vector(1)
+        for: 0m
+        labels: { severity: critical, team: payments }
+        annotations: { summary: "checkout error rate high (demo)" }
+
+      # A different team → exercises a sibling route branch.
+      - alert: SearchLatency
+        expr: vector(1)
+        for: 0m
+        labels: { severity: warning, team: search }
+        annotations: { summary: "search latency high (demo)" }

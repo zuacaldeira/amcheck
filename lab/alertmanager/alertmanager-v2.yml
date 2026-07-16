@@ -1,0 +1,50 @@
+# A PROPOSED change to alertmanager.yml — looks harmless, isn't.
+#
+# Two edits vs the baseline:
+#   1. team="payments"  →  team=~"payments-prod"   (someone "scoped it to prod")
+#      → every team="payments" alert now falls through to `default`.
+#   2. a new inhibit rule mutes team=search warnings when ANY critical fires.
+#
+# Run amcheck BEFORE applying this to see both problems predicted:
+#   ../amcheck alertmanager/alertmanager.yml alertmanager/alertmanager-v2.yml --explain
+
+route:
+  receiver: default
+  group_by: [alertname, team]
+  group_wait: 3s
+  group_interval: 10s
+  repeat_interval: 1h
+  routes:
+    - matchers: ['team=~"payments-prod"']       # (1) narrowed — drops team="payments"
+      receiver: payments
+      routes:
+        - matchers: ['severity="critical"']
+          receiver: payments-critical
+    - matchers: ['team="search"']
+      receiver: search
+
+inhibit_rules:
+  - source_matchers: ['severity="critical"']    # unchanged from baseline
+    target_matchers: ['team="payments"', 'severity="warning"']
+    equal: ['alertname', 'team']
+  - source_matchers: ['severity="critical"']    # (2) NEW — newly mutes search warnings
+    target_matchers: ['team="search"', 'severity="warning"']
+    equal: []
+
+receivers:
+  - name: default
+    webhook_configs:
+      - url: "http://sink:8080/default"
+        send_resolved: true
+  - name: payments
+    webhook_configs:
+      - url: "http://sink:8080/payments"
+        send_resolved: true
+  - name: payments-critical
+    webhook_configs:
+      - url: "http://sink:8080/payments-critical"
+        send_resolved: true
+  - name: search
+    webhook_configs:
+      - url: "http://sink:8080/search"
+        send_resolved: true

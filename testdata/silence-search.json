@@ -1,0 +1,12 @@
+[
+  {
+    "id": "5e11c3d0-0000-4000-8000-000000000001",
+    "comment": "mute search alerts during migration",
+    "createdBy": "lab",
+    "startsAt": "2026-01-01T00:00:00Z",
+    "endsAt": "2099-01-01T00:00:00Z",
+    "matchers": [
+      { "name": "team", "value": "search", "isRegex": false, "isEqual": true }
+    ]
+  }
+]

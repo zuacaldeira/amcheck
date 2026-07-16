@@ -1,0 +1,13 @@
+route:
+  receiver: default
+  group_by: [alertname]
+  routes:
+    - matchers: ['severity="warning"']
+      receiver: warn-slack
+inhibit_rules:
+  - source_matchers: ['severity="critical"']
+    target_matchers: ['severity="warning"']
+    equal: ['alertname']
+receivers:
+  - name: default
+  - name: warn-slack
