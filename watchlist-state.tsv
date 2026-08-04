@@ -75,7 +75,7 @@ irorikon/prometheus-compose|alertmanager/alertmanager.yml	836c69e6866a14f219b2d4
 istanculea/Ionut-Stanculea-Portofolio|portfolio-work/labs/prometheus-grafana-alerting/alertmanager.yml	c48ce6318cad7ca4b24d9338734e7781d3b44a4a
 jaspervincent/devops-installation-examples|topic/kubernetes/infra/prod/monitoring-stack/alertmanager/config.yml	34cb87cf0be71b1baa09bf041485b23dc71bf4e9
 justsaumit/internship-learning|Day15-140623/alertmanager.yml	70c6b507cf33753ca720efa1bc28a2995808492c
-klogins-hash/agent-dream-team|alertmanager.yml	240a1c4b7e05ba7965e5161bff1b96203c20cb6b
+klogins-hash/agent-dream-team|alertmanager.yml	{"message":"Not Found","documentation_url":"https://docs.github.com/rest/commits/commits#list-commits","status":"404"}
 kwstars/demo|prometheus/basics/alertmanager.yml	2f54f4e7e07d9178f46e76c6d264c0e626847d21
 malempati-git/Projects|observability/day-4/alerts-alertmanager-servicemonitor-manifest/alertmangerconfig.yml	d0b101a2a49c96c1250ab2b2368b8b0126856342
 manish7992/GitOps-K8s-deployment|monitoring/alertmanager.yml	e7587630cfa750ebeaba32058ee5b8156c1ed143
