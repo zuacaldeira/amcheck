@@ -1,4 +1,4 @@
-<!-- totals: runs=44 changes=5 flagged=0 safe=1 skipped=4 -->
+<!-- totals: runs=45 changes=6 flagged=0 safe=1 skipped=5 -->
 # amcheck watchlist scoreboard
 
 Automated daily scan of public Alertmanager configs with amcheck.
@@ -7,14 +7,15 @@ Automated daily scan of public Alertmanager configs with amcheck.
 | Metric | Total |
 |---|---|
 | Configs watched | 114 |
-| Runs to date | 44 |
-| Config changes observed | 5 |
+| Runs to date | 45 |
+| Config changes observed | 6 |
 | Changes flagged for review | 0 |
 | Changes passed as safe | 1 |
-| Changes skipped (unparseable / template) | 4 |
+| Changes skipped (unparseable / template) | 5 |
 
 ## Daily log
 
+- **2026-08-28** — watched 114, 0 new baseline, 1 changed → 0 flagged, 0 safe, 1 skipped
 - **2026-08-27** — watched 114, 0 new baseline, 0 changed → 0 flagged, 0 safe, 0 skipped
 - **2026-08-26** — watched 114, 0 new baseline, 0 changed → 0 flagged, 0 safe, 0 skipped
 - **2026-08-25** — watched 114, 0 new baseline, 0 changed → 0 flagged, 0 safe, 0 skipped
