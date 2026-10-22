@@ -40,7 +40,7 @@ Tr285-ai/N5StyleEA_Pro|tools/alerts/alertmanager.yml	0cc96a89a4658f7dae21600437f
 Vahid-Kouh-Jani-Gouji/SNS-Alertmanager-Prometheus-Terraform|files/alertmanager.yml	c6dfdec3478b0554662cbe1dcdaf9ed6d0398acb
 VarunMendre/Server-Snippets|Observability-Fundamentals/24_Setting-Up-Prometheus-Alertmanager/alertmanager.yml	743a02d1eec743bbc98720eb7d6eb0f8b78f0de5
 Vln4ik/Diplom-XAI-Project|infra/observability/alertmanager/alertmanager.yml	0c3609d631a9c3d001733814ebe7d3916df5b1e3
-altsvayer/CyberArena-Monitoring-Stack|alertmanager.yml	a705bdfbbb6700e7fe91498301c48ee8a2241c5d
+altsvayer/CyberArena-Monitoring-Stack|alertmanager.yml	{"message":"Not Found","documentation_url":"https://docs.github.com/rest/commits/commits#list-commits","status":"404"}
 amhyer/makassarujian|docker/prometheus/alertmanager.yml	98bbddf88d1bb3227a9254a513ba61daebbf21b8
 basnight/eks-monitoring-and-logging|kube-prometheus-stack/alertmangerconfig.yml	c075861510a3bdcfd3f301cf3a847afb1f2bbd43
 bfritzinger/Misc_Scripts|pwr-temp-monitor/alertmanager.yml	13c5f42d47f3671a094ab283a0cdcda4032677d7
