@@ -27,7 +27,7 @@ Lifailon/rudocs|Docker-Compose/mon-stack/alertmanager.yml	206736a83fe1b8bc79eeaf
 NDXDeveloper/formation-debian|module-15-observabilite-monitoring/scripts/02-prometheus/02.3-alertmanager.yml	8e750e89e337b04eceb2b48208ae4c137ec85a79
 OTMO123/VitalCore|monitoring/alertmanager/alertmanager.yml	968bc3dcd12687f6eef80906a9ec609e380ab31f
 Oscarj-jqt/devops-chart-app|monitoring/alertmanager/alertmanager.yml	8605574d34f17d1fe5315e0b2b14b7bb400e5e65
-PhongSEVN/VietCropDoctor|infra/monitoring/alertmanager/alertmanager.yml	cb100e76254ed6a7eec71db829e0c3273663c3d2
+PhongSEVN/VietCropDoctor|infra/monitoring/alertmanager/alertmanager.yml	{"message":"Not Found","documentation_url":"https://docs.github.com/rest","status":"404"}
 PrasiddhaBhattarai/Docker-Monitoring-Alerting-Stack|alertmanager/alertmanager.yml	5aa7ad6228eccaa2b4faf08a2b4ab8249675dc75
 RazorBest/docker-peer-observer|alertmanager.yml	4d84d22c79a546667e6e52b0648d696dac4d5bfe
 RosieOh/MediView-infra|monitoring/alertmanager/alertmanager.yml	{"message":"Not Found","documentation_url":"https://docs.github.com/rest/commits/commits#list-commits","status":"404"}
